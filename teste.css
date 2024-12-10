@@ -19,11 +19,19 @@ form {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  max-width: 600px;
+  /* Aumentei a largura máxima */
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /* Permite que os campos quebrem para a linha seguinte quando necessário */
+  gap: 15px;
+  /* Espaço entre os campos */
 }
 
 form div {
+  flex: 1 1 calc(50% - 15px);
+  /* Campos ocupam 50% da largura até 768px */
   margin-bottom: 15px;
 }
 
@@ -37,7 +45,8 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="file"] {
-  width: calc(100% - 22px);
+  width: 100%;
+  /* Campo ocupa toda a largura disponível */
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
@@ -62,4 +71,16 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+/* Quando a tela for menor que 768px, os campos se empilham */
+@media (max-width: 768px) {
+  form {
+    flex-direction: column;
+  }
+
+  form div {
+    flex: 1 1 100%;
+    /* Cada campo ocupa 100% da largura */
+  }
 }
